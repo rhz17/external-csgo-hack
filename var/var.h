@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../memory/slim.h"
+#include "../shared/slim.h"
 
 namespace var {
 	// memory

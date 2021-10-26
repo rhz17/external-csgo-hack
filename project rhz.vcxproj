@@ -72,9 +72,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\coole\Documents\Projects\external-csgo-hack\shared\curl\include\curl;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\coole\Documents\Projects\external-csgo-hack\shared\curl\lib;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>$(ExternalIncludePath)</ExternalIncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\coole\Documents\Projects\external-csgo-hack\shared\curl\include\curl;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\coole\Documents\Projects\external-csgo-hack\shared\curl\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -88,11 +94,21 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -110,6 +126,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -141,14 +158,71 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="memory\slim.cpp" />
+    <ClCompile Include="shared\slim.cpp" />
     <ClCompile Include="project rhz.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hacks\hacks.h" />
+    <ClInclude Include="memory\get_offset.h" />
     <ClInclude Include="memory\offset.h" />
-    <ClInclude Include="memory\slim.h" />
+    <ClInclude Include="shared\curl\include\curl\curl.h" />
+    <ClInclude Include="shared\curl\include\curl\curlver.h" />
+    <ClInclude Include="shared\curl\include\curl\easy.h" />
+    <ClInclude Include="shared\curl\include\curl\json.hpp" />
+    <ClInclude Include="shared\curl\include\curl\mprintf.h" />
+    <ClInclude Include="shared\curl\include\curl\multi.h" />
+    <ClInclude Include="shared\curl\include\curl\options.h" />
+    <ClInclude Include="shared\curl\include\curl\stdcheaders.h" />
+    <ClInclude Include="shared\curl\include\curl\system.h" />
+    <ClInclude Include="shared\curl\include\curl\typecheck-gcc.h" />
+    <ClInclude Include="shared\curl\include\curl\urlapi.h" />
+    <ClInclude Include="shared\rapidjson\allocators.h" />
+    <ClInclude Include="shared\rapidjson\cursorstreamwrapper.h" />
+    <ClInclude Include="shared\rapidjson\document.h" />
+    <ClInclude Include="shared\rapidjson\encodedstream.h" />
+    <ClInclude Include="shared\rapidjson\encodings.h" />
+    <ClInclude Include="shared\rapidjson\error\en.h" />
+    <ClInclude Include="shared\rapidjson\error\error.h" />
+    <ClInclude Include="shared\rapidjson\filereadstream.h" />
+    <ClInclude Include="shared\rapidjson\filewritestream.h" />
+    <ClInclude Include="shared\rapidjson\fwd.h" />
+    <ClInclude Include="shared\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="shared\rapidjson\internal\clzll.h" />
+    <ClInclude Include="shared\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="shared\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="shared\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="shared\rapidjson\internal\itoa.h" />
+    <ClInclude Include="shared\rapidjson\internal\meta.h" />
+    <ClInclude Include="shared\rapidjson\internal\pow10.h" />
+    <ClInclude Include="shared\rapidjson\internal\regex.h" />
+    <ClInclude Include="shared\rapidjson\internal\stack.h" />
+    <ClInclude Include="shared\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="shared\rapidjson\internal\strtod.h" />
+    <ClInclude Include="shared\rapidjson\internal\swap.h" />
+    <ClInclude Include="shared\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="shared\rapidjson\memorybuffer.h" />
+    <ClInclude Include="shared\rapidjson\memorystream.h" />
+    <ClInclude Include="shared\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="shared\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="shared\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="shared\rapidjson\pointer.h" />
+    <ClInclude Include="shared\rapidjson\prettywriter.h" />
+    <ClInclude Include="shared\rapidjson\rapidjson.h" />
+    <ClInclude Include="shared\rapidjson\reader.h" />
+    <ClInclude Include="shared\rapidjson\schema.h" />
+    <ClInclude Include="shared\rapidjson\stream.h" />
+    <ClInclude Include="shared\rapidjson\stringbuffer.h" />
+    <ClInclude Include="shared\rapidjson\uri.h" />
+    <ClInclude Include="shared\rapidjson\writer.h" />
+    <ClInclude Include="shared\slim.h" />
     <ClInclude Include="var\var.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shared\curl\bin\curl.exe" />
+    <None Include="shared\curl\bin\libcurl-x64.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="shared\curl\lib\libcurl.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

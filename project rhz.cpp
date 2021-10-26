@@ -1,6 +1,23 @@
 #include "hacks/hacks.h"
+#include "memory/get_offset.h"
 
 std::int32_t main( ) {
+	if ( !get_offset::raw( ) ) {
+		std::cout << "Cannot get offsets raw..." << std::endl;
+		std::cout << "Closing project rhz in 3 seconds..." << std::endl;
+
+		std::this_thread::sleep_for( std::chrono::milliseconds( 3000 ) );
+		return 0;
+	}
+
+	// get netvar offset
+	offset::dwLocalPlayer = get_offset::offset( "dwLocalPlayer" );
+	offset::dwEntityList = get_offset::offset( "dwEntityList" );
+	offset::m_iCrosshairId = get_offset::offset( "m_iCrosshairId" );
+	offset::m_iTeamNum = get_offset::offset( "m_iTeamNum" );
+	offset::m_iHealth = get_offset::offset( "m_iHealth" );
+	offset::dwForceAttack = get_offset::offset( "dwForceAttack" );
+
 	std::cout << "Waiting csgo process..." << std::endl;
 	while ( !SlimUtils::SlimMem::GetPID( L"csgo.exe", &var::pid ) )
 		std::this_thread::sleep_for( std::chrono::milliseconds( 3000 ) );
