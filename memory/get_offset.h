@@ -17,7 +17,7 @@ using namespace rapidjson;
 
 namespace get_offset {
 	// json offsets
-	Document offsets = { };
+	inline Document offsets = { };
 
 	inline static std::size_t write( void* contents, std::size_t size, std::size_t nmemb, void* userp ) {
 		( ( std::string* )userp )->append( ( char* )contents, size * nmemb );
@@ -25,12 +25,10 @@ namespace get_offset {
 	}
 
 	inline bool raw( ) {
-		CURL* curl;
-		CURLcode res;
-		std::string read_buffer;
+		CURLcode res = { };
+		std::string read_buffer = { };
 
-		curl = curl_easy_init( );
-
+		CURL* curl = curl_easy_init( );
 		if ( curl ) {
 			curl_easy_setopt( curl, CURLOPT_URL, "https://raw.githubusercontent.com/frk1/hazedumper/master/csgo.json" );
 			curl_easy_setopt( curl, CURLOPT_WRITEFUNCTION, write );
